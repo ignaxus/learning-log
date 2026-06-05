@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'learning_logs',
+    'users',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+LOGIN_REDIRECT_URL = "learning_logs:topics"
+LOGOUT_REDIRECT_URL = "learning_logs:home"
+LOGIN_URL = "users:login"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
