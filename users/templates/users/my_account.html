@@ -1,0 +1,32 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<h2>My Account</h2>
+
+<p>Username: {{ user.username }}</p>
+
+<p>Topics: {{ topics_count }}</p>
+
+<p>Entries: {{ entries_count }}</p>
+
+{% if latest_entry %}
+    <p>Latest Entry: {{ latest_entry.date_added|date:"F j, Y" }}</p>
+{% else %}
+    <p>Latest Entry: None</p>
+{% endif %}
+
+<p>Account Age: {{ account_age }} days</p>
+
+<p>
+    <a href="{% url 'users:password_change' %}">
+        Change Password
+    </a>
+</p>
+
+<form action="{% url 'users:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Log Out</button>
+</form>
+
+{% endblock content %}
