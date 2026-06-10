@@ -6,4 +6,30 @@
 
 <p>Keep track of what you learn.</p>
 
+{% if user.is_authenticated %}
+
+    <p>
+        Welcome, {{ user.username }}.
+    </p>
+
+    <p>
+        <a href="{% url 'learning_logs:topics' %}">
+            View your topics
+        </a>
+    </p>
+
+{% else %}
+
+    <p>
+        <a href="{% url 'users:register' %}">
+            Register
+        </a>
+        |
+        <a href="{% url 'users:login' %}">
+            Log in
+        </a>
+    </p>
+
+{% endif %}
+
 {% endblock content %}

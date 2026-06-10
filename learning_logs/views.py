@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 # Create your views here.
@@ -58,3 +58,29 @@ def new_entry(request, topic_id):
 
     context = {"topic": topic, "form": form}
     return render(request, "learning_logs/new_entry.html", context)
+
+@login_required
+def delete_topic(request, topic_id):
+    topic = get_object_or_404(Topic, id=topic_id, owner=request.user)
+
+    if request.method == "POST":
+        topic.delete()
+        return redirect("learning_logs:topics")
+
+    context = {"topic": topic}
+    return render(request, "learning_logs/delete_topic.html", context)
+
+@login_required
+def delete_entry(request, entry_id):
+    entry = get_object_or_404(Entry, id=entry_id, topic__owner=request.user)
+
+    topic = entry.topic
+
+    if request.method == "POST":
+        entry.delete()
+
+        return redirect("learning_logs:topic", topic_id=topic.id)
+
+    context = {"entry": entry, "topic": topic,}
+
+    return render(request, "learning_logs/delete_entry.html", context)

@@ -18,6 +18,12 @@
             {{ entry.text }}
         </p>
 
+        <p>
+            <a href="{% url 'learning_logs:delete_entry' entry.id %}">
+                Delete entry
+            </a>
+        </p>
+
     </li>
 
 {% empty %}
