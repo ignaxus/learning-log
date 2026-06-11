@@ -4,6 +4,12 @@
 
 <h1>Topics</h1>
 
+<p>
+    <a href="{% url 'learning_logs:new_topic' %}">
+        Add a new topic
+    </a>
+</p>
+
 <ul>
 
 {% for topic in topics %}
@@ -14,6 +20,8 @@
             {{ topic.text }}
         </a>
 
+        <a href="{% url 'learning_logs:edit_topic' topic.id %}">edit</a>
+        
         <a href="{% url 'learning_logs:delete_topic' topic.id %}">
             Delete
         </a>
@@ -27,11 +35,5 @@
 {% endfor %}
 
 </ul>
-
-<p>
-    <a href="{% url 'learning_logs:new_topic' %}">
-        Add a new topic
-    </a>
-</p>
 
 {% endblock content %}
