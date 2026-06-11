@@ -2,30 +2,49 @@
 
 {% block content %}
 
-<div class="card">
-    <div class="card-body">
+<div class="row justify-content-center">
 
-        <h3>Delete Topic</h3>
+    <div class="col-md-6 col-lg-5">
 
-        <p>
-            Are you sure you want to delete
-            <strong>{{ topic.text }}</strong>?
-        </p>
+        <div class="card border-danger">
 
-        <form method="post">
-            {% csrf_token %}
+            <div class="card-header bg-danger text-white">
+                Delete Topic
+            </div>
 
-            <button type="submit">
-                Delete
-            </button>
+            <div class="card-body">
 
-            <a href="{% url 'learning_logs:topics' %}">
-                Cancel
-            </a>
+                <p>
+                    Are you sure you want to delete
+                    <strong>{{ topic.text }}</strong>?
+                </p>
 
-        </form>
+                <div class="d-flex gap-2">
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            class="btn btn-danger">
+                            Delete
+                        </button>
+
+                    </form>
+
+                    <a class="btn btn-outline-secondary"
+                       href="{% url 'learning_logs:topics' %}">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
+
 </div>
 
 {% endblock content %}

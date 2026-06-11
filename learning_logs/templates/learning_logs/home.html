@@ -2,34 +2,52 @@
 
 {% block content %}
 
-<h1>Learning Log</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-9">
 
-<p>Keep track of what you learn.</p>
+        <div class="p-5 mt-4 bg-light border rounded-4">
 
-{% if user.is_authenticated %}
+            <h1 class="display-4 fw-bold mb-3">
+                Learning Log
+            </h1>
 
-    <p>
-        Welcome, {{ user.username }}.
-    </p>
+            <p class="lead text-muted mb-4">
+                Keep track of what you learn, organize your thoughts,
+                and build your personal knowledge base.
+            </p>
 
-    <p>
-        <a href="{% url 'learning_logs:topics' %}">
-            View your topics
-        </a>
-    </p>
+            {% if user.is_authenticated %}
 
-{% else %}
+                <p class="mb-4">
+                    Welcome back, <strong>{{ user.username }}</strong>.
+                </p>
 
-    <p>
-        <a href="{% url 'users:register' %}">
-            Register
-        </a>
-        |
-        <a href="{% url 'users:login' %}">
-            Log in
-        </a>
-    </p>
+                <a class="btn btn-primary btn-lg"
+                   href="{% url 'learning_logs:topics' %}">
+                    View your topics
+                </a>
 
-{% endif %}
+            {% else %}
+
+                <div class="d-flex gap-2">
+
+                    <a class="btn btn-primary btn-lg"
+                       href="{% url 'users:register' %}">
+                        Register
+                    </a>
+
+                    <a class="btn btn-outline-secondary btn-lg"
+                       href="{% url 'users:login' %}">
+                        Log in
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
 
 {% endblock content %}
