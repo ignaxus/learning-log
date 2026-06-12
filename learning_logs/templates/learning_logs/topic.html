@@ -19,19 +19,17 @@
 
         <div class="card-header bg-secondary text-white">
 
-            <strong>
-                Created:
-                {{ entry.date_added|date:"M d, Y H:i" }}
-            </strong>
+            <div>
+                <strong>
+                    Created:
+                    {{ entry.date_added|date:"M d, Y H:i" }}
+                </strong>
+            </div>
 
-            {% if entry.date_modified != entry.date_added %}
-
-                <span class="ms-3">
-                    Edited:
-                    {{ entry.date_modified|date:"M d, Y H:i" }}
-                </span>
-
-            {% endif %}
+            <div class="small text-light mt-1">
+                Edited:
+                {{ entry.date_modified|date:"M d, Y H:i" }}
+            </div>
 
         </div>
 
