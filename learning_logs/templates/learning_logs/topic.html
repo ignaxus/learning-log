@@ -8,7 +8,7 @@
 
     <a class="btn btn-primary"
        href="{% url 'learning_logs:new_entry' topic.id %}">
-        Add Entry
+        新建笔记
     </a>
 
 </div>
@@ -21,14 +21,14 @@
 
             <div>
                 <strong>
-                    Created:
-                    {{ entry.date_added|date:"M d, Y H:i" }}
+                    创建日期:
+                    {{ entry.date_added|date:"Y年n月j日 H:i" }}
                 </strong>
             </div>
 
             <div class="small text-light mt-1">
-                Edited:
-                {{ entry.date_modified|date:"M d, Y H:i" }}
+                上一次修改:
+                {{ entry.date_modified|date:"Y年n月j日 H:i" }}
             </div>
 
         </div>
@@ -43,12 +43,12 @@
 
             <a class="btn btn-outline-secondary btn-sm"
                href="{% url 'learning_logs:edit_entry' entry.id %}">
-                Edit
+                修改
             </a>
 
             <a class="btn btn-outline-danger btn-sm"
                href="{% url 'learning_logs:delete_entry' entry.id %}">
-                Delete
+                删除
             </a>
 
         </div>
@@ -58,7 +58,7 @@
 {% empty %}
 
     <div class="alert alert-light border">
-        No entries have been added yet.
+        你还没有任何笔记
     </div>
 
 {% endfor %}

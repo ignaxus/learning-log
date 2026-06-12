@@ -8,23 +8,23 @@
         <div class="p-5 mt-4 bg-light border rounded-4">
 
             <h1 class="display-4 fw-bold mb-3">
-                Learning Log
+                学习笔记
             </h1>
 
             <p class="lead text-muted mb-4">
-                Keep track of what you learn, organize your thoughts,
-                and build your personal knowledge base.
+                按主题整理知识，用条目记录思考。
+                每一次记录，都标注时间，让成长有迹可循。
             </p>
 
             {% if user.is_authenticated %}
 
                 <p class="mb-4">
-                    Welcome back, <strong>{{ user.username }}</strong>.
+                    欢迎回来, <strong>{{ user.username }}</strong>.
                 </p>
 
                 <a class="btn btn-primary btn-lg"
                    href="{% url 'learning_logs:topics' %}">
-                    View your topics
+                    查看主题
                 </a>
 
             {% else %}
@@ -33,12 +33,12 @@
 
                     <a class="btn btn-primary btn-lg"
                        href="{% url 'users:register' %}">
-                        Register
+                        注册
                     </a>
 
                     <a class="btn btn-outline-secondary btn-lg"
                        href="{% url 'users:login' %}">
-                        Log in
+                        登录
                     </a>
 
                 </div>

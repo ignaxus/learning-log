@@ -9,13 +9,13 @@
         <div class="card border-danger">
 
             <div class="card-header bg-danger text-white">
-                Delete Topic
+                删除主题
             </div>
 
             <div class="card-body">
 
                 <p>
-                    Are you sure you want to delete
+                    你确定要删除这个主题吗
                     <strong>{{ topic.text }}</strong>?
                 </p>
 
@@ -27,14 +27,14 @@
                         <button
                             type="submit"
                             class="btn btn-danger">
-                            Delete
+                            确定
                         </button>
 
                     </form>
 
                     <a class="btn btn-outline-secondary"
                        href="{% url 'learning_logs:topics' %}">
-                        Cancel
+                        取消
                     </a>
 
                 </div>
