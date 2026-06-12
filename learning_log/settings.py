@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+#path after login or logout
 LOGIN_REDIRECT_URL = "learning_logs:home"
 LOGOUT_REDIRECT_URL = "learning_logs:home"
 LOGIN_URL = "users:login"

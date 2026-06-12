@@ -10,8 +10,10 @@ from learning_logs.models import Topic, Entry
 
 
 def register(request):
+    #if open a new template, create a new registration form
     if request.method != "POST":
         form = UserCreationForm()
+    #if post request, save the content
     else:
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
@@ -23,6 +25,7 @@ def register(request):
 
 @login_required
 def my_account(request):
+    #get all information
     topics_count = Topic.objects.filter(owner=request.user).count()
 
     entries_count = Entry.objects.filter(topic__owner=request.user).count()
