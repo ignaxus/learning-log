@@ -1,13 +1,30 @@
 {% load django_bootstrap5 %}
+{% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>学习笔记</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- iOS -->
+    <link rel="apple-touch-icon"
+          href="{% static 'icon/apple-touch-icon.png' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+          href="{% static 'icon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{% static 'icon/icon-192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512"
+          href="{% static 'icon/icon-512.png' %}">
 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -35,7 +52,7 @@
                 </li>
 
             </ul>
-            
+
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
@@ -58,6 +75,17 @@
     {% endblock content %}
 
 </div>
+
+<!-- 注册 Service Worker（根路径注册，scope 覆盖全站） -->
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register(
+                "/service-worker.js"
+            );
+        });
+    }
+</script>
 
 </body>
 </html>

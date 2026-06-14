@@ -4,6 +4,8 @@ from . import views
 
 app_name = 'learning_logs'
 urlpatterns = [
+    path("service-worker.js", views.service_worker, name='service_worker'),
+
     path("", views.home, name = 'home'),
 
     path("topics/", views.topics, name='topics'),

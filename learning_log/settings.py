@@ -128,3 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# 项目级别 static 目录路径（存放 manifest.json、service-worker.js、图标等）
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]

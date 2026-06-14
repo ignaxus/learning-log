@@ -1,12 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from django.http import Http404
+from django.http import Http404, HttpResponse
+from pathlib import Path
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 # Create your views here.
+def service_worker(request):
+    # 在根路径提供 service-worker.js，使 scope 为 "/"
+    base_dir = Path(__file__).resolve().parent.parent
+    sw_path = base_dir / 'static' / 'service-worker.js'
+    with open(sw_path, 'r') as f:
+        content = f.read()
+    return HttpResponse(content, content_type='application/javascript')
+
 def home(request):
     return render(request, 'learning_logs/home.html')
 
