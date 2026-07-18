@@ -87,5 +87,5 @@ It may also be useful as a reference project for students and developers who are
 
 This project is licensed under the Apache License 2.0.
 
-Copyright (c) 2026 Ignaxus
+Copyright (c) 2026 Veratic Labs
 
